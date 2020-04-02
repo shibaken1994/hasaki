@@ -23,7 +23,4 @@ async def on_message(message):
 async def ping(ctx):
     await ctx.send('pong')
 
-@client.event
-
-
 bot.run(token)
