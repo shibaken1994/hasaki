@@ -1,4 +1,3 @@
-  
 from discord.ext import commands
 import os
 import traceback
@@ -13,6 +12,12 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
+@client.event
+async def on_message(message):
+    if message.content == '/cleanup':
+        if message.author.guild_permissions.administrator:
+            await message.channel.purge()
+            await message.channel.send('ハサキィ！！！')
 
 @bot.command()
 async def ping(ctx):
